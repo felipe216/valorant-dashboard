@@ -56,3 +56,16 @@ nunit-*.xml
 # User-specific files
 .vs/
 .vscode/
+
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
