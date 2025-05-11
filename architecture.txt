@@ -1,0 +1,19 @@
+﻿ValorantStatsApp/
+│
+├── Models/          
+│   └── Player.cs
+│   └── MatchStats.cs
+│
+├── Services/        
+│   └── ApiService.cs
+│
+├── ViewModels/      
+│   └── MainViewModel.cs
+│
+├── Views/           
+│   └── MainWindow.xaml
+│
+├── Helpers/         
+│   └── ScoreCalculator.cs
+│
+└── App.xaml.cs 

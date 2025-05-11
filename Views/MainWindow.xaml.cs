@@ -20,5 +20,14 @@ namespace ValorantStatsAPP
         {
             InitializeComponent();
         }
+
+        private void ButtonGetUuid_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtTag.Text))
+            {
+                System.Diagnostics.Debug.WriteLine(txtName.Text);
+                txtName.Clear();
+            }
+        }
     }
 }
