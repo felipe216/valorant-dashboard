@@ -69,3 +69,5 @@ nunit-*.xml
 *.msi
 *.msm
 *.msp
+
+appsettings.json

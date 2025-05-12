@@ -9,12 +9,22 @@ using System.Threading.Tasks;
 using ValorantStatsAPP.Models;
 using Newtonsoft.Json;
 using System.Xml.Linq;
+using ValorantStatsAPP.Helpers;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace ValorantStatsAPP.Services
 {
     public class ApiService
     {
-        private readonly HttpClient _client = new HttpClient();
+        private readonly HttpClient _client;
+
+        public ApiService() 
+        {
+            var config = ConfigManager.LoadConfig();
+            _client = new HttpClient();
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.Token);
+        }
 
         public async Task<List<MatchData>> GetMatchStatsAsync(string username,  string tag)
         {
