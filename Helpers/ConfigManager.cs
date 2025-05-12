@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
 using ValorantStatsAPP.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace ValorantStatsAPP.Helpers
 {
-    internal class ConfigManager
+    public class ConfigManager
     {
-        public static ApiConfig LoadConfig()
+        public static ApiConfig Load()
         {
-            string json = File.ReadAllText("appsettings.json");
-            return JsonSerializer.Deserialize<ApiConfig>(json);
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            IConfiguration config = builder.Build();
+            var settings = new ApiConfig();
+            settings.BaseUrl = config["ApiConfig:BaseUrl"];
+            settings.Token = config["ApiConfig:Token"];
+            return settings;
         }
     }
 }
