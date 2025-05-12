@@ -29,7 +29,6 @@ namespace ValorantStatsAPP.Models
         public int FriendlyFireIn { get; set; }
         public int FriendlyFireOut { get; set; }
 
-        public double AverageKDA => Matches.Average(x => x.KDA);
         public double Score => ScoreCalculator.Calculate(this);
     }
 }

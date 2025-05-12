@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Formats.Asn1;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ValorantStatsAPP.ViewModels;
 
 namespace ValorantStatsAPP
 {
@@ -16,17 +18,25 @@ namespace ValorantStatsAPP
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainViewModel _viewModel = new();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = _viewModel;
+            //Loaded += MainWindow_Loaded;
         }
 
-        private void ButtonGetUuid_Click(object sender, RoutedEventArgs e)
+        //private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        //{
+            //await _viewModel.LoadMatchesAsync();
+        //}
+
+        private async void ButtonGetUuid_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtTag.Text))
             {
-                System.Diagnostics.Debug.WriteLine(txtName.Text);
-                txtName.Clear();
+                await _viewModel.LoadMatchesAsync(txtName.Text, txtTag.Text);
+                
             }
         }
     }
