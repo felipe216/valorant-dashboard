@@ -28,6 +28,12 @@ namespace ValorantStatsAPP.ViewModels
         {
             var result = await _apiService.GetMatchStatsAsync(name, tag);
             Matches = new ObservableCollection<MatchData>(result);
+
+            List<Player> players = new List<Player>();
+            foreach (var match in Matches)
+            {
+                
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

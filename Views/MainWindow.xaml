@@ -29,7 +29,7 @@
         <ListBox ItemsSource="{Binding Matches}" Grid.Column="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding MetaData}" />
+                    <TextBlock Text="{Binding MetaData.Map}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
