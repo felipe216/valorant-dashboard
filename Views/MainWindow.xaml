@@ -26,18 +26,13 @@
             <Button x:Name="btnAdd" Margin="0,5,0,0" Click="ButtonGetUuid_Click">Get Stats</Button>
         </StackPanel>
 
-        <ListBox ItemsSource="{Binding Matches}" Grid.Column="1">
+        <ListBox ItemsSource="{Binding PlayersList}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Players:" FontWeight="Bold" />
-                        <ListBox ItemsSource="{Binding Players}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Player.Name}" />
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Kills}" />
+                        <TextBlock Text="{Binding Stats.Score}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -25,6 +25,7 @@ namespace ValorantStatsAPP.ViewModels
             get { return _matches; }
             set { _matches = value; OnPropertyChanged(nameof(Matches)); }
         }
+        public ObservableCollection<Player>? PlayersList { get; set; }
 
         public async Task LoadMatchesAsync(string name, string tag)
         {
@@ -39,6 +40,10 @@ namespace ValorantStatsAPP.ViewModels
             {
                 foreach (var player in match.Players)
                 {
+                    if (player.Name != name && player.Tag != tag)
+                    {
+                        continue;
+                    }
                     string? puuid = player.Puuid;
                     if (string.IsNullOrWhiteSpace(puuid))
                     {
@@ -83,9 +88,12 @@ namespace ValorantStatsAPP.ViewModels
                     {
                         playersDict.Add(puuid, player);
                     }
+                    PlayersList = new ObservableCollection<Player>(playersDict.Values);
 
+                    OnPropertyChanged(nameof(PlayersList));
                 }
             }
+
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
