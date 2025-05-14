@@ -12,8 +12,8 @@ namespace ValorantStatsAPP.Models
     public class MatchData
     {
         public required MetaData MetaData { get; set; }
-        public required Players Players { get; set; }
-        public required JObject Teams { get; set; }
+        public required List<Player> Players { get; set; }
+        public required List<JObject> Teams { get; set; }
         public required List<JObject> Rounds { get; set; }
     }
 }

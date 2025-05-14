@@ -29,7 +29,16 @@
         <ListBox ItemsSource="{Binding Matches}" Grid.Column="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding MetaData.Map}" />
+                    <StackPanel>
+                        <TextBlock Text="Players:" FontWeight="Bold" />
+                        <ListBox ItemsSource="{Binding Players}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Player.Name}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

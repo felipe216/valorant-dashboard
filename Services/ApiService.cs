@@ -21,15 +21,15 @@ namespace ValorantStatsAPP.Services
 
         public ApiService() 
         {
-            var config = ConfigManager.Load();
+            ApiConfig config = ConfigManager.Load();
             _client = new HttpClient();
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(config.Token);
+            _client.DefaultRequestHeaders.Add("Authorization", config.Token);
         }
 
         public async Task<List<MatchData>> GetMatchStatsAsync(string username,  string tag)
         {
 
-            var url = $"https://api.henrikdev.xyz/valorant/v3/matches/br/{username}/{tag}";
+            var url = $"https://api.henrikdev.xyz/valorant/v4/matches/br/pc/{username}/{tag}";
             var response = await _client.GetAsync(url);
             System.Diagnostics.Debug.WriteLine(_client.DefaultRequestHeaders);
             System.Diagnostics.Debug.WriteLine(response);
